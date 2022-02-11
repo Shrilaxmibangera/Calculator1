@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #a9bd7e;
+        }
+
+        table {
+            margin: auto;
+            background-color: #9dd2ea;
+            width: 300px;
+            height: 325px;
+            text-align: center;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        input {
+            outline: 0;
+            margin: auto;
+            position: relative;
+            left: 5px;
+            top: 5px;
+            border: 0;
+            color: #495069;
+
+            width: 60px;
+            height: 50px;
+            float: left;
+            margin: 5px;
+            font-size: 20px;
+            box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #operator {
+            background-color: #f1ff92;
+            position: relative;
+        }
+
+
+        #clear {
+            float: left;
+            position: relative;
+            display: block;
+            background-color: #ff9fa8;
+            margin-bottom: 15px;
+        }
+
+        #answer {
+            width: 280px;
+            font-size: 26px;
+            text-align: center;
+            background-color: #f1faeb;
+            float: left;
+        }
+
+        /* answer hover effect */
+    </style>
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <th colspan="4"><input type="text" name="input" size="16" id="answer"></th>
+            </tr>
+            <tr>
+                <td><input type="button" name="one" class="num" value="1" id="one1" onclick="cal(this.value)"></td>
+                <td><input type="button" name="two" class="num" value="2" onclick="cal(this.value)"></td>
+                <td><input type="button" name="three" class="num" value="3" onclick="cal(this.value)"></td>
+                <td><input type="button" id="operator" class="num" name="plus" value="+" onclick="cal(this.value)"></td>
+            </tr>
+            <tr>
+                <td><input type="button" name="four" value="4" class="num" onclick="cal(this.value)"></td>
+                <td><input type="button" name="five" value="5" class="num" onclick="cal(this.value)"></td>
+                <td><input type="button" name="six" value="6" class="num" onclick="cal(this.value)"></td>
+                <td><input type="button" id="operator" class="num" name="minus" value="-" onclick="cal(this.value)"></td>
+            </tr>
+            <tr>
+                <td><input type="button" name="seven" value="7" class="num" onclick="cal(this.value)"></td>
+                <td><input type="button" name="eight" value="8" class="num" onclick="cal(this.value)"></td>
+                <td><input type="button" name="nine" value="9" class="num" onclick="cal(this.value)"></td>
+                <td><input type="button" id="operator" class="num" name="times" value="*" onclick="cal(this.value)"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="clear" name="clear" class="num" value="C" onclick="cal(this.value)"></td>
+                <td><input type="button" name="zero" value="0" class="num" onclick="cal(this.value)"></td>
+                <td><input type="button" name="doit" value="=" class="num" onclick="cal(this.value)"></td>
+                <td><input type="button" id="operator" class="num" name="div" value="/" onclick="cal(this.value)"></td>
+            </tr>
+        </table>
+
+    </div>
+    <script>
+        let n1;
+            let n2;
+            
+            let str1;
+            let str;
+            let s2="";
+            let s1 ="";
+            let str2;
+        function cal(idval) {
+            //let elements = document.getElementsByClassName("num");
+            str=idval;
+                console.log(str);
+                if (str == "+" || str == "-" || str == "*" || str == "/") {
+                    str1 = parseInt(document.getElementById("answer").value);
+                    s2 = str;
+                    n1 = str1;
+                    s1 = "";
+                }
+                else if (str=="=") {
+
+                    str2 = parseInt(document.getElementById("answer").value);
+                    n2 = str2;
+                    var sum;
+                    if (s2 == "+")
+                        sum = n1 + n2;
+                    else if (s2 == "-")
+                        sum = n1 - n2;
+                    if (s2 == "*")
+                        sum = n1 * n2;
+                    else if (s2 == "/")
+                        sum = n1 / n2;
+                    document.getElementById("answer").value = sum;
+                    console.log(sum);
+                    s1 = "";
+                }
+                else if(str == "C") {
+                    s1="";
+                    s2="";
+                    str="";
+                    str1="";
+                    str2="";
+                    document.getElementById("answer").value = "";
+                }
+                else {
+                    s1 += str;
+                    document.getElementById("answer").value = s1;
+                }
+            
+
+        }
+    </script>
+</body>
+
+</html>
